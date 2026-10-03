@@ -1,0 +1,10 @@
+
+  "name": "FitMuse AI",
+  "short_name": "FitMuse",
+  "description": "Your personal AI fashion stylist.",
+  "start_url": "fitmuse-final.html",
+  "display": "standalone",
+  "background_color": "#fff8fc",
+  "theme_color": "#a84f7c",
+  "orientation": "portrait"
+}

@@ -1,0 +1,3915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FitMuse AI ♡</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #fff8fc;
+    color: #624554;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 235px;
+    height: 100vh;
+    background: #fff0f7;
+    border-right: 1px solid #efd8e4;
+    padding: 25px 17px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.logo {
+    text-align: center;
+    color: #a84f7c;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 28px;
+}
+
+.logo span {
+    display: block;
+    font-size: 11px;
+    color: #b7839d;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.nav-button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 11px 14px;
+    margin: 3px 0;
+    border-radius: 18px;
+    text-align: left;
+    color: #7d4a64;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-button:hover,
+.nav-button.active {
+    background: #f1dce7;
+}
+
+.sidebar-divider {
+    border: 0;
+    border-top: 1px solid #ead1df;
+    margin: 18px 5px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    margin-left: 235px;
+    padding: 38px 6%;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.eyebrow {
+    color: #c66b98;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+h1 {
+    color: #a84f7c;
+    font-size: 54px;
+    line-height: 1.05;
+    margin: 12px 0 18px;
+}
+
+h2 {
+    color: #a84f7c;
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+h3 {
+    color: #9b5678;
+}
+
+p {
+    line-height: 1.7;
+}
+
+button {
+    font-family: inherit;
+}
+
+.primary-button {
+    background: #a84f7c;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background: #8e4168;
+}
+
+.secondary-button {
+    background: #f1dce7;
+    color: #7d4a64;
+    border: none;
+    padding: 12px 19px;
+    border-radius: 22px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.secondary-button:hover {
+    background: #e9ccda;
+}
+
+.danger-button {
+    background: #f8e1eb;
+    color: #a84f7c;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 17px;
+    cursor: pointer;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.hero {
+    min-height: 62vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero p {
+    max-width: 670px;
+    font-size: 18px;
+}
+
+.hero-buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 17px;
+    margin-top: 30px;
+}
+
+.feature-card {
+    background: white;
+    border: 1px solid #f0dce7;
+    border-radius: 23px;
+    padding: 22px;
+}
+
+.feature-card .emoji {
+    font-size: 32px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.info-box,
+.style-card,
+.chat-box,
+.profile-card,
+.planner-card,
+.challenge-card,
+.saved-card {
+    background: white;
+    border: 1px solid #efd9e5;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.section-top {
+    margin-bottom: 25px;
+}
+
+/* =========================
+   CLOSET
+========================= */
+
+.closet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 17px;
+    margin-top: 25px;
+}
+
+.closet-item {
+    background: white;
+    border: 1px solid #efd9e5;
+    border-radius: 22px;
+    padding: 16px;
+    min-height: 185px;
+    text-align: center;
+}
+
+.closet-item img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.closet-icon {
+    font-size: 55px;
+    margin: 13px 0;
+}
+
+.closet-item strong {
+    display: block;
+    color: #70465a;
+    margin-top: 7px;
+}
+
+.closet-item small {
+    color: #a67b91;
+}
+
+.add-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #d59bb7;
+    background: #fffafd;
+    cursor: pointer;
+}
+
+.add-item:hover {
+    background: #fff0f7;
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.filter-button {
+    border: none;
+    background: #f8e6ef;
+    color: #80516a;
+    border-radius: 18px;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.filter-button.active {
+    background: #a84f7c;
+    color: white;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: #7b4a63;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.chat-input input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e4c7d6;
+    border-radius: 15px;
+    background: #fffafd;
+    color: #624554;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* =========================
+   STYLE ME
+========================= */
+
+.style-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.outfit-result {
+    margin-top: 28px;
+}
+
+.outfit-box {
+    background: linear-gradient(135deg, #fff0f7, #fffafd);
+    border: 1px solid #efd9e5;
+    border-radius: 27px;
+    padding: 25px;
+}
+
+.outfit-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.outfit-piece {
+    background: white;
+    border-radius: 19px;
+    padding: 13px;
+    text-align: center;
+}
+
+.outfit-piece img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 13px;
+}
+
+.piece-icon {
+    font-size: 45px;
+    padding: 15px 0;
+}
+
+.outfit-piece strong {
+    display: block;
+    margin-top: 6px;
+}
+
+.outfit-piece small {
+    color: #a2778c;
+}
+
+.outfit-note {
+    background: white;
+    border-radius: 18px;
+    padding: 15px;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.outfit-actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   WEATHER
+========================= */
+
+.weather-box {
+    background: linear-gradient(135deg, #fff0f7, #f9edf4);
+    border-radius: 25px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.weather-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 15px;
+}
+
+.weather-button {
+    border: none;
+    background: white;
+    border: 1px solid #efd9e5;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.weather-button.active {
+    background: #a84f7c;
+    color: white;
+}
+
+/* =========================
+   SAVED OUTFITS
+========================= */
+
+.saved-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.saved-card {
+    padding: 20px;
+}
+
+.saved-card h3 {
+    margin-top: 0;
+}
+
+.saved-mini-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.saved-mini-item {
+    background: #fff3f8;
+    border-radius: 13px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.saved-mini-item strong {
+    display: block;
+}
+
+/* =========================
+   PLANNER
+========================= */
+
+.planner-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+    gap: 10px;
+    overflow-x: auto;
+    margin-top: 25px;
+}
+
+.day-card {
+    background: white;
+    border: 1px solid #efd9e5;
+    border-radius: 20px;
+    padding: 15px;
+    min-width: 125px;
+}
+
+.day-card h3 {
+    font-size: 15px;
+}
+
+.day-outfit {
+    background: #fff0f7;
+    border-radius: 14px;
+    padding: 10px;
+    min-height: 85px;
+    font-size: 12px;
+}
+
+/* =========================
+   CHALLENGE
+========================= */
+
+.challenge-progress {
+    height: 15px;
+    background: #f4dfe9;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 18px 0;
+}
+
+.challenge-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #a84f7c;
+    transition: 0.3s;
+}
+
+.challenge-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.challenge-day {
+    background: #fff0f7;
+    border-radius: 15px;
+    padding: 12px 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.challenge-day.done {
+    background: #a84f7c;
+    color: white;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.chat-messages {
+    min-height: 190px;
+    max-height: 360px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.message {
+    padding: 11px 14px;
+    border-radius: 18px;
+    margin: 8px 0;
+    max-width: 82%;
+    line-height: 1.5;
+}
+
+.bot-message {
+    background: #fff0f7;
+}
+
+.user-message {
+    background: #f1dce7;
+    margin-left: auto;
+}
+
+.chat-input {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input input {
+    flex: 1;
+}
+
+.chat-input button {
+    border: none;
+    background: #a84f7c;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 13px;
+    margin-top: 20px;
+}
+
+.stat {
+    background: #fff0f7;
+    border-radius: 18px;
+    padding: 18px;
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    color: #a84f7c;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(75, 40, 58, 0.38);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 510px;
+    border-radius: 28px;
+    padding: 28px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    float: right;
+    border: none;
+    background: #f8e5ee;
+    color: #a84f7c;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.photo-preview {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.photo-preview img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+        width: 190px;
+    }
+
+    .main {
+        margin-left: 190px;
+    }
+
+    .planner-grid {
+        grid-template-columns: repeat(7, 125px);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .style-options,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #a84f7c;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 25px;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 5000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+body.dark-mode {
+    background: #171218;
+    color: #f8eaf2;
+}
+
+body.dark-mode .page {
+    background: #171218;
+    color: #f8eaf2;
+}
+
+body.dark-mode .sidebar {
+    background: #211923;
+    color: #f8eaf2;
+}
+
+body.dark-mode .nav-button {
+    color: #f8eaf2;
+}
+
+body.dark-mode .nav-button:hover {
+    background: #352635;
+}
+
+body.dark-mode .settings-card,
+body.dark-mode .premium-feature,
+body.dark-mode .premium-hero,
+body.dark-mode .premium-cta {
+    background: #261d27;
+    color: #f8eaf2;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode p {
+    color: #f8eaf2;
+}
+</style>
+<link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        FitMuse AI ♡
+        <span>Your personal style space</span>
+    </div>
+
+    <button class="nav-button active" onclick="showPage('home', this)">
+        ♡ Home
+    </button>
+
+    <button class="nav-button" onclick="showPage('closet', this)">
+        👗 My Closet
+    </button>
+
+    <button class="nav-button" onclick="showPage('style', this)">
+        ✨ Style Me
+    </button>
+
+    <button class="nav-button" onclick="showPage('saved', this)">
+        💾 Saved Outfits
+    </button>
+
+    <button class="nav-button" onclick="showPage('planner', this)">
+        📅 Outfit Planner
+    </button>
+
+    <button class="nav-button" onclick="showPage('challenge', this)">
+        🔄 Rewear Challenge
+    </button>
+
+    <button class="nav-button" onclick="showPage('chat', this)">
+        💬 AI Stylist
+    </button>
+
+    <button class="nav-button" onclick="showPage('profile', this)">
+        ♡ Profile
+    </button>
+
+    <hr class="sidebar-divider">
+
+   <button class="nav-button" onclick="showPage('plus', this)">
+    ✦ FitMuse+
+</button>
+
+    <button class="nav-button" onclick="showPage('settings', this)">
+    ⚙ Settings
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="eyebrow">
+            WELCOME TO FITMUSE ♡
+        </div>
+
+        <h1>
+            Your closet.<br>
+            Your style.<br>
+            Your rules. 🎀
+        </h1>
+
+        <p>
+            FitMuse is your personal digital stylist. Add the clothes
+            you already own, create outfits, save your favorites,
+            plan your week and discover new ways to wear your wardrobe.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-button"
+                    onclick="showPage('style')">
+                ✨ Style Me
+            </button>
+
+            <button class="secondary-button"
+                    onclick="showPage('closet')">
+                👗 Open My Closet
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="emoji">👗</div>
+            <h3>Digital Closet</h3>
+            <p>
+                Keep your wardrobe organized in one cute place.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="emoji">✨</div>
+            <h3>Style Me</h3>
+            <p>
+                Create outfits using clothes you actually own.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="emoji">💾</div>
+            <h3>Save Looks</h3>
+            <p>
+                Save outfits you love so you can wear them again.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="emoji">📅</div>
+            <h3>Plan Your Week</h3>
+            <p>
+                Organize your outfits before the week begins.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CLOSET
+========================= -->
+
+<section id="closet" class="page">
+
+    <div class="section-top">
+
+        <div class="eyebrow">
+            YOUR DIGITAL WARDROBE
+        </div>
+
+        <h2>My Closet 👗</h2>
+
+        <p>
+            Add your real clothes and FitMuse will use them for styling.
+        </p>
+
+    </div>
+
+
+    <div class="filter-bar">
+
+        <button class="filter-button active"
+                onclick="filterCloset('All', this)">
+            All
+        </button>
+
+        <button class="filter-button"
+                onclick="filterCloset('Top', this)">
+            Tops
+        </button>
+
+        <button class="filter-button"
+                onclick="filterCloset('Bottom', this)">
+            Bottoms
+        </button>
+
+        <button class="filter-button"
+                onclick="filterCloset('Dress', this)">
+            Dresses
+        </button>
+
+        <button class="filter-button"
+                onclick="filterCloset('Shoes', this)">
+            Shoes
+        </button>
+
+        <button class="filter-button"
+                onclick="filterCloset('Bag', this)">
+            Bags
+        </button>
+
+        <button class="filter-button"
+                onclick="filterCloset('Accessory', this)">
+            Accessories
+        </button>
+
+    </div>
+
+
+    <div class="closet-grid" id="closetGrid"></div>
+
+</section>
+
+
+<!-- =========================
+     STYLE ME
+========================= -->
+
+<section id="style" class="page">
+
+    <div class="eyebrow">
+        YOUR PERSONAL STYLIST
+    </div>
+
+    <h2>✨ Style Me</h2>
+
+    <p>
+        Tell FitMuse where you're going, what the weather is like,
+        and what vibe you want.
+    </p>
+
+
+    <div class="style-card">
+
+        <div class="style-options">
+
+            <div class="form-group">
+
+                <label>
+                    Where are you going?
+                </label>
+
+                <select id="occasion">
+
+                    <option>School</option>
+                    <option>Casual Day</option>
+                    <option>Party</option>
+                    <option>Birthday</option>
+                    <option>Dinner</option>
+                    <option>Shopping</option>
+                    <option>Just Because</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    What's your vibe?
+                </label>
+
+                <select id="style">
+
+                    <option>Coquette</option>
+                    <option>Y2K</option>
+                    <option>Cozy</option>
+                    <option>Soft Girl</option>
+                    <option>Streetwear</option>
+                    <option>Minimalist</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- WEATHER -->
+
+        <div class="weather-box">
+
+            <h3>
+                🌤️ What's the weather like?
+            </h3>
+
+            <div class="weather-options">
+
+                <button class="weather-button active"
+                        onclick="setWeather('Sunny', this)">
+                    ☀️ Sunny
+                </button>
+
+                <button class="weather-button"
+                        onclick="setWeather('Warm', this)">
+                    🌸 Warm
+                </button>
+
+                <button class="weather-button"
+                        onclick="setWeather('Cool', this)">
+                    🍂 Cool
+                </button>
+
+                <button class="weather-button"
+                        onclick="setWeather('Rainy', this)">
+                    🌧️ Rainy
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button class="primary-button"
+                onclick="generateOutfit()"
+                style="margin-top:22px;">
+            ✨ Generate My Outfit
+        </button>
+
+
+        <div id="outfitResult"
+             class="outfit-result">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SAVED OUTFITS
+========================= -->
+
+<section id="saved" class="page">
+
+    <div class="eyebrow">
+        YOUR FAVORITE LOOKS
+    </div>
+
+    <h2>💾 Saved Outfits</h2>
+
+    <p>
+        Your favorite FitMuse looks live here.
+    </p>
+
+    <div id="savedGrid"
+         class="saved-grid">
+    </div>
+
+</section>
+
+
+<!-- =========================
+     OUTFIT PLANNER
+========================= -->
+
+<section id="planner" class="page">
+
+    <div class="eyebrow">
+        PLAN AHEAD
+    </div>
+
+    <h2>📅 Outfit Planner</h2>
+
+    <p>
+        Pick a saved outfit for each day of your week.
+    </p>
+
+    <div class="planner-card">
+
+        <div id="plannerGrid"
+             class="planner-grid">
+        </div>
+
+        <br>
+
+        <button class="secondary-button"
+                onclick="clearPlanner()">
+            Clear Week
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FITMUSE+
+========================= -->
+
+<section id="plus" class="page">
+
+    <div class="eyebrow">
+        YOUR STYLE, UPGRADED
+    </div>
+
+    <h2>✦ FitMuse+ 🎀</h2>
+
+    <p>
+        Unlock a more personalized FitMuse experience.
+    </p>
+
+
+    <div class="premium-hero">
+
+        <div class="premium-badge">
+            ✦ FITMUSE+
+        </div>
+
+        <h3>
+            Your wardrobe.<br>
+            Upgraded. ♡
+        </h3>
+
+        <p>
+            Get more from your closet with smarter styling,
+            deeper wardrobe insights and exclusive fashion features.
+        </p>
+
+    </div>
+
+
+    <div class="premium-grid">
+
+
+        <div class="premium-feature">
+
+            <div class="premium-icon">
+                🤖
+            </div>
+
+            <h3>
+                Advanced AI Stylist
+            </h3>
+
+            <p>
+                Get more personalized outfit ideas based on
+                your wardrobe, occasion and style.
+            </p>
+
+        </div>
+
+
+        <div class="premium-feature">
+
+            <div class="premium-icon">
+                👗
+            </div>
+
+            <h3>
+                Smart Wardrobe
+            </h3>
+
+            <p>
+                Discover what you wear most and find new ways
+                to style pieces you already own.
+            </p>
+
+        </div>
+
+
+        <div class="premium-feature">
+
+            <div class="premium-icon">
+                🌤️
+            </div>
+
+            <h3>
+                Weather Styling
+            </h3>
+
+            <p>
+                Get outfit suggestions designed around
+                different weather conditions.
+            </p>
+
+        </div>
+
+
+        <div class="premium-feature">
+
+            <div class="premium-icon">
+                📅
+            </div>
+
+            <h3>
+                Advanced Planning
+            </h3>
+
+            <p>
+                Plan your outfits ahead and keep your whole
+                week looking cute and organized.
+            </p>
+
+        </div>
+
+
+        <div class="premium-feature">
+
+            <div class="premium-icon">
+                🎀
+            </div>
+
+            <h3>
+                Personal Style Profile
+            </h3>
+
+            <p>
+                Build a style identity based on the looks,
+                colors and aesthetics you love.
+            </p>
+
+        </div>
+
+
+        <div class="premium-feature">
+
+            <div class="premium-icon">
+                💎
+            </div>
+
+            <h3>
+                Exclusive Challenges
+            </h3>
+
+            <p>
+                Take on fun styling and rewear challenges
+                designed to make your closet more exciting.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="premium-cta">
+
+        <h3>
+            ✦ FitMuse+ is coming soon ♡
+        </h3>
+
+        <p>
+            We're building something special for your wardrobe.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="showToast('FitMuse+ is coming soon ♡')">
+
+            ♡ Coming Soon
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<section id="settings" class="page">
+
+    <div class="eyebrow">
+        MAKE FITMUSE YOURS
+    </div>
+
+    <h2>⚙ Settings</h2>
+
+    <p>
+        Customize your FitMuse experience. ♡
+    </p>
+
+    <div class="settings-card">
+
+        <h3>🎀 Appearance</h3>
+
+        <p>Choose how FitMuse looks.</p>
+
+        <button
+            class="primary-button"
+            onclick="toggleDarkMode()">
+            🌙 Toggle Dark Mode
+        </button>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h3>🔔 Notifications</h3>
+
+        <p>Get reminders about your outfits and style plans.</p>
+
+        <button
+            class="primary-button"
+            onclick="toggleNotifications()">
+            🔔 Outfit Reminders
+        </button>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h3>👗 Closet</h3>
+
+        <p>Manage the clothes you've added to FitMuse.</p>
+
+        <button
+            class="primary-button"
+            onclick="showPage('closet', this)">
+            👗 Manage My Closet
+        </button>
+
+    </div>
+
+    <div class="settings-card">
+
+        <h3>💾 Your Data</h3>
+
+        <p>Manage your saved outfits and planner data.</p>
+
+        <button
+            class="primary-button"
+            onclick="clearSavedOutfits()">
+            🗑 Clear Saved Outfits
+        </button>
+
+        <button
+            class="primary-button"
+            onclick="clearPlanner()">
+            📅 Clear Outfit Planner
+        </button>
+
+    </div>
+
+    <div class="settings-card danger-card">
+
+        <h3>⚠️ Reset FitMuse</h3>
+
+        <p>
+            This will remove your closet, saved outfits,
+            planner and challenge progress.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="resetFitMuse()">
+            🗑 Reset All FitMuse Data
+        </button>
+
+    </div>
+
+</section>
+<!-- =========================
+     REWEAR CHALLENGE
+========================= -->
+
+<section id="challenge" class="page">
+
+    <div class="eyebrow">
+        LOVE YOUR WARDROBE
+    </div>
+
+    <h2>🔄 Rewear Challenge</h2>
+
+    <div class="challenge-card">
+
+        <h3>
+            7 Days of Rewear ♡
+        </h3>
+
+        <p>
+            Wear something you already own every day this week.
+            Fashion doesn't always mean buying something new.
+        </p>
+
+        <div class="challenge-progress">
+
+            <div id="challengeProgress"
+                 class="challenge-progress-bar">
+            </div>
+
+        </div>
+
+        <p id="challengeText">
+            0 of 7 days completed
+        </p>
+
+        <div id="challengeDays"
+             class="challenge-days">
+        </div>
+
+        <br>
+
+        <button class="primary-button"
+                onclick="resetChallenge()">
+            Restart Challenge
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AI STYLIST
+========================= -->
+
+<section id="chat" class="page">
+
+    <div class="eyebrow">
+        YOUR STYLE BESTIE
+    </div>
+
+    <h2>💬 AI Stylist</h2>
+
+    <p>
+        Ask FitMuse for styling ideas.
+    </p>
+
+
+    <div class="chat-box">
+
+        <div id="chatMessages"
+             class="chat-messages">
+
+            <div class="message bot-message">
+
+                Hiii bestie 🎀 I'm your FitMuse stylist!
+                Ask me things like:
+                <br><br>
+                "What should I wear to school?"
+                <br>
+                "How can I style my jeans?"
+                <br>
+                "What goes with pink?"
+                ♡
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input">
+
+            <input
+                id="chatInput"
+                type="text"
+                placeholder="Ask your stylist..."
+                onkeydown="if(event.key === 'Enter') sendMessage()"
+            >
+
+            <button onclick="sendMessage()">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<section id="profile" class="page">
+
+    <div class="eyebrow">
+        YOUR FITMUSE
+    </div>
+
+    <h2>♡ My Profile</h2>
+
+    <div class="profile-card">
+
+        <h3>
+            My Style Dashboard 🎀
+        </h3>
+
+        <p>
+            Keep building your wardrobe and discovering your style.
+        </p>
+
+
+        <div class="stats-grid">
+
+            <div class="stat">
+
+                <span class="stat-number"
+                      id="profileClosetCount">
+                    0
+                </span>
+
+                Closet Items
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="stat-number"
+                      id="profileSavedCount">
+                    0
+                </span>
+
+                Saved Looks
+
+            </div>
+
+
+            <div class="stat">
+
+                <span class="stat-number"
+                      id="profileChallengeCount">
+                    0
+                </span>
+
+                Rewear Days
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     ADD CLOTHING MODAL
+========================= -->
+
+<div id="clothingModal"
+     class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-button"
+                onclick="closeAddClothing()">
+            ×
+        </button>
+
+        <h2>
+            Add to My Closet ♡
+        </h2>
+
+        <p>
+            Add something you actually own.
+        </p>
+
+
+        <div class="form-group">
+
+            <label>
+                Clothing name
+            </label>
+
+            <input
+                id="clothingName"
+                type="text"
+                placeholder="e.g. Pink hoodie"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Category
+            </label>
+
+            <select id="clothingCategory">
+
+                <option>Top</option>
+                <option>Bottom</option>
+                <option>Dress</option>
+                <option>Shoes</option>
+                <option>Bag</option>
+                <option>Accessory</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Color
+            </label>
+
+            <input
+                id="clothingColor"
+                type="text"
+                placeholder="e.g. Pink"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Photo (optional)
+            </label>
+
+            <input
+                id="clothingPhoto"
+                type="file"
+                accept="image/*"
+                onchange="previewPhoto(event)"
+            >
+
+            <div id="photoPreview"
+                 class="photo-preview">
+            </div>
+
+        </div>
+
+
+        <button class="primary-button"
+                onclick="addClothing()">
+            ♡ Add to Closet
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div id="toast"
+     class="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   FITMUSE DATA
+===================================================== */
+
+let selectedPhoto = "";
+
+let currentWeather = "Sunny";
+
+let currentFilter = "All";
+
+let currentGeneratedOutfit = [];
+
+
+/* =====================================================
+   SAMPLE CLOTHES
+===================================================== */
+
+function getSampleClothes() {
+
+    return [
+
+        {
+            id: "sample1",
+            name: "White Baby Tee",
+            category: "Top",
+            color: "White",
+            photo: ""
+        },
+
+        {
+            id: "sample2",
+            name: "Pink Blouse",
+            category: "Top",
+            color: "Pink",
+            photo: ""
+        },
+
+        {
+            id: "sample3",
+            name: "Baggy Jeans",
+            category: "Bottom",
+            color: "Blue",
+            photo: ""
+        },
+
+        {
+            id: "sample4",
+            name: "Pink Skirt",
+            category: "Bottom",
+            color: "Pink",
+            photo: ""
+        },
+
+        {
+            id: "sample5",
+            name: "White Sneakers",
+            category: "Shoes",
+            color: "White",
+            photo: ""
+        },
+
+        {
+            id: "sample6",
+            name: "Pink Bag",
+            category: "Bag",
+            color: "Pink",
+            photo: ""
+        }
+
+    ];
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(pageId, button) {
+
+    document.querySelectorAll(".page").forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    const page = document.getElementById(pageId);
+
+    if (page) {
+
+        page.classList.add("active");
+
+    }
+
+
+    document.querySelectorAll(".nav-button").forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    window.scrollTo(0, 0);
+
+
+    if (pageId === "closet") {
+
+        displayCloset();
+
+    }
+
+
+    if (pageId === "saved") {
+
+        displaySavedOutfits();
+
+    }
+
+
+    if (pageId === "planner") {
+
+        displayPlanner();
+
+    }
+
+
+    if (pageId === "challenge") {
+
+        displayChallenge();
+
+    }
+
+
+    if (pageId === "profile") {
+
+        updateProfile();
+
+    }
+
+}
+
+
+/* =====================================================
+   ADD CLOTHING
+===================================================== */
+
+function openAddClothing() {
+
+    document.getElementById("clothingModal")
+        .classList.add("show");
+
+}
+
+
+function closeAddClothing() {
+
+    document.getElementById("clothingModal")
+        .classList.remove("show");
+
+    document.getElementById("clothingName").value = "";
+
+    document.getElementById("clothingColor").value = "";
+
+    document.getElementById("clothingPhoto").value = "";
+
+    document.getElementById("photoPreview").innerHTML = "";
+
+    selectedPhoto = "";
+
+}
+
+
+function previewPhoto(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+
+    const reader = new FileReader();
+
+
+    reader.onload = function(e) {
+
+        selectedPhoto = e.target.result;
+
+        document.getElementById("photoPreview").innerHTML =
+
+            `<img src="${selectedPhoto}" alt="Preview">`;
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+function addClothing() {
+
+    const name =
+        document.getElementById("clothingName")
+        .value
+        .trim();
+
+    const category =
+        document.getElementById("clothingCategory")
+        .value;
+
+    const color =
+        document.getElementById("clothingColor")
+        .value
+        .trim();
+
+
+    if (!name) {
+
+        alert("Please enter the clothing name ♡");
+
+        return;
+
+    }
+
+
+    let clothes =
+        JSON.parse(
+            localStorage.getItem("fitmuseClothes")
+        ) || [];
+
+
+    const newItem = {
+
+        id: Date.now(),
+
+        name: name,
+
+        category: category,
+
+        color: color || "Unknown",
+
+        photo: selectedPhoto || ""
+
+    };
+
+
+    clothes.push(newItem);
+
+
+    localStorage.setItem(
+        "fitmuseClothes",
+        JSON.stringify(clothes)
+    );
+
+
+    displayCloset();
+
+    closeAddClothing();
+
+    showToast("Added to your closet ♡");
+
+}
+
+
+/* =====================================================
+   GET ALL CLOTHES
+===================================================== */
+
+function getAllClothes() {
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem("fitmuseClothes")
+        ) || [];
+
+
+    return getSampleClothes().concat(saved);
+
+}
+
+
+/* =====================================================
+   CLOSET DISPLAY
+===================================================== */
+
+function displayCloset() {
+
+    const grid =
+        document.getElementById("closetGrid");
+
+    if (!grid) return;
+
+
+    const clothes = getAllClothes();
+
+
+    let filtered = clothes;
+
+
+    if (currentFilter !== "All") {
+
+        filtered =
+            clothes.filter(function(item) {
+
+                return item.category === currentFilter;
+
+            });
+
+    }
+
+
+    let html = "";
+
+
+    filtered.forEach(function(item) {
+
+        html += createClosetCard(item);
+
+    });
+
+
+    html += `
+
+        <div class="closet-item add-item"
+             onclick="openAddClothing()">
+
+            <div>
+
+                <div class="closet-icon">
+                    ＋
+                </div>
+
+                <strong>
+                    Add Clothing
+                </strong>
+
+                <small>
+                    Add something new ♡
+                </small>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    grid.innerHTML = html;
+
+}
+
+
+function createClosetCard(item) {
+
+    let visual = "";
+
+
+    if (item.photo) {
+
+        visual =
+            `<img src="${item.photo}"
+                  alt="${escapeHtml(item.name)}">`;
+
+    }
+
+    else {
+
+        visual =
+            `<div class="closet-icon">
+                ${getCategoryIcon(item.category)}
+             </div>`;
+
+    }
+
+
+    const isSavedItem =
+        String(item.id).startsWith("sample") === false;
+
+
+    return `
+
+        <div class="closet-item">
+
+            ${visual}
+
+            <strong>
+                ${escapeHtml(item.name)}
+            </strong>
+
+            <small>
+                ${escapeHtml(item.category)}
+                •
+                ${escapeHtml(item.color)}
+            </small>
+
+            ${
+                isSavedItem
+                ?
+                `
+                <br>
+
+                <button
+                    class="danger-button"
+                    onclick="deleteClothing(${item.id})">
+
+                    Remove
+
+                </button>
+                `
+                :
+                ""
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+function getCategoryIcon(category) {
+
+    if (category === "Top") return "👚";
+
+    if (category === "Bottom") return "👖";
+
+    if (category === "Dress") return "👗";
+
+    if (category === "Shoes") return "👟";
+
+    if (category === "Bag") return "👜";
+
+    if (category === "Accessory") return "🎀";
+
+    return "♡";
+
+}
+
+
+/* =====================================================
+   CLOSET FILTER
+===================================================== */
+
+function filterCloset(category, button) {
+
+    currentFilter = category;
+
+
+    document.querySelectorAll(".filter-button")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    displayCloset();
+
+}
+
+
+/* =====================================================
+   DELETE CLOTHING
+===================================================== */
+
+function deleteClothing(id) {
+
+    let clothes =
+        JSON.parse(
+            localStorage.getItem("fitmuseClothes")
+        ) || [];
+
+
+    clothes =
+        clothes.filter(function(item) {
+
+            return item.id !== id;
+
+        });
+
+
+    localStorage.setItem(
+        "fitmuseClothes",
+        JSON.stringify(clothes)
+    );
+
+
+    displayCloset();
+
+    showToast("Removed from your closet");
+
+}
+
+
+/* =====================================================
+   WEATHER
+===================================================== */
+
+function setWeather(weather, button) {
+
+    currentWeather = weather;
+
+
+    document.querySelectorAll(".weather-button")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    showToast("Weather set to " + weather + " ♡");
+
+}
+
+
+/* =====================================================
+   OUTFIT SCORING
+===================================================== */
+
+function scoreItem(item, style, occasion) {
+
+    let score = 0;
+
+
+    const name =
+        item.name.toLowerCase();
+
+    const color =
+        item.color.toLowerCase();
+
+
+    /* COQUETTE */
+
+    if (style === "Coquette") {
+
+        if (
+            color.includes("pink") ||
+            color.includes("white") ||
+            color.includes("red")
+        ) {
+
+            score += 5;
+
+        }
+
+
+        if (
+            name.includes("skirt") ||
+            name.includes("blouse") ||
+            name.includes("dress") ||
+            name.includes("bow")
+        ) {
+
+            score += 5;
+
+        }
+
+    }
+
+
+    /* Y2K */
+
+    if (style === "Y2K") {
+
+        if (
+            name.includes("baggy") ||
+            name.includes("jean") ||
+            name.includes("hoodie")
+        ) {
+
+            score += 5;
+
+        }
+
+
+        if (
+            color.includes("pink") ||
+            color.includes("blue") ||
+            color.includes("green")
+        ) {
+
+            score += 3;
+
+        }
+
+    }
+
+
+    /* COZY */
+
+    if (style === "Cozy") {
+
+        if (
+            name.includes("hoodie") ||
+            name.includes("sweater") ||
+            name.includes("jean")
+        ) {
+
+            score += 6;
+
+        }
+
+    }
+
+
+    /* SOFT GIRL */
+
+    if (style === "Soft Girl") {
+
+        if (
+            color.includes("pink") ||
+            color.includes("white") ||
+            color.includes("cream") ||
+            color.includes("lavender")
+        ) {
+
+            score += 5;
+
+        }
+
+
+        if (
+            name.includes("skirt") ||
+            name.includes("blouse") ||
+            name.includes("dress")
+        ) {
+
+            score += 4;
+
+        }
+
+    }
+
+
+    /* STREETWEAR */
+
+    if (style === "Streetwear") {
+
+        if (
+            name.includes("hoodie") ||
+            name.includes("baggy") ||
+            name.includes("jean")
+        ) {
+
+            score += 6;
+
+        }
+
+    }
+
+
+    /* MINIMALIST */
+
+    if (style === "Minimalist") {
+
+        if (
+            color.includes("white") ||
+            color.includes("black") ||
+            color.includes("beige") ||
+            color.includes("grey") ||
+            color.includes("gray") ||
+            color.includes("blue")
+        ) {
+
+            score += 5;
+
+        }
+
+    }
+
+
+    /* WEATHER */
+
+    if (currentWeather === "Sunny") {
+
+        if (
+            name.includes("hoodie") ||
+            name.includes("sweater")
+        ) {
+
+            score -= 3;
+
+        }
+
+    }
+
+
+    if (currentWeather === "Warm") {
+
+        if (
+            name.includes("hoodie") ||
+            name.includes("sweater")
+        ) {
+
+            score -= 4;
+
+        }
+
+        if (
+            name.includes("tee") ||
+            name.includes("tank")
+        ) {
+
+            score += 4;
+
+        }
+
+    }
+
+
+    if (currentWeather === "Cool") {
+
+        if (
+            name.includes("hoodie") ||
+            name.includes("sweater") ||
+            name.includes("jacket")
+        ) {
+
+            score += 6;
+
+        }
+
+    }
+
+
+    if (currentWeather === "Rainy") {
+
+        if (
+            item.category === "Shoes"
+        ) {
+
+            score += 3;
+
+        }
+
+        if (
+            name.includes("sneaker")
+        ) {
+
+            score += 3;
+
+        }
+
+    }
+
+
+    /* OCCASION */
+
+    if (occasion === "School") {
+
+        if (
+            item.category === "Bottom" ||
+            item.category === "Shoes"
+        ) {
+
+            score += 2;
+
+        }
+
+    }
+
+
+    if (
+        occasion === "Party" ||
+        occasion === "Birthday"
+    ) {
+
+        if (
+            item.category === "Dress" ||
+            item.category === "Bag"
+        ) {
+
+            score += 4;
+
+        }
+
+    }
+
+
+    if (occasion === "Dinner") {
+
+        if (
+            item.category === "Dress" ||
+            item.category === "Top"
+        ) {
+
+            score += 3;
+
+        }
+
+    }
+
+
+    return score;
+
+}
+
+
+/* =====================================================
+   CHOOSE ITEM
+===================================================== */
+
+function chooseBest(items, style, occasion, usedIds) {
+
+    const available =
+        items.filter(function(item) {
+
+            return !usedIds.includes(item.id);
+
+        });
+
+
+    if (!available.length) return null;
+
+
+    const scored =
+        available.map(function(item) {
+
+            return {
+
+                item: item,
+
+                score:
+                    scoreItem(
+                        item,
+                        style,
+                        occasion
+                    )
+
+            };
+
+        });
+
+
+    scored.sort(function(a, b) {
+
+        return b.score - a.score;
+
+    });
+
+
+    const highest =
+        scored[0].score;
+
+
+    const topItems =
+        scored.filter(function(entry) {
+
+            return entry.score === highest;
+
+        });
+
+
+    return topItems[
+        Math.floor(
+            Math.random() * topItems.length
+        )
+    ].item;
+
+}
+
+
+/* =====================================================
+   GENERATE OUTFIT
+===================================================== */
+
+function generateOutfit() {
+
+    const occasion =
+        document.getElementById("occasion").value;
+
+    const style =
+        document.getElementById("style").value;
+
+
+    const clothes =
+        getAllClothes();
+
+
+    const dresses =
+        clothes.filter(
+            item => item.category === "Dress"
+        );
+
+
+    const tops =
+        clothes.filter(
+            item => item.category === "Top"
+        );
+
+
+    const bottoms =
+        clothes.filter(
+            item => item.category === "Bottom"
+        );
+
+
+    const shoes =
+        clothes.filter(
+            item => item.category === "Shoes"
+        );
+
+
+    const bags =
+        clothes.filter(
+            item => item.category === "Bag"
+        );
+
+
+    const accessories =
+        clothes.filter(
+            item => item.category === "Accessory"
+        );
+
+
+    let outfit = [];
+
+    let usedIds = [];
+
+
+    /* DRESS OUTFIT */
+
+    if (
+        dresses.length &&
+        Math.random() < 0.3
+    ) {
+
+        const dress =
+            chooseBest(
+                dresses,
+                style,
+                occasion,
+                usedIds
+            );
+
+
+        if (dress) {
+
+            outfit.push(dress);
+
+            usedIds.push(dress.id);
+
+        }
+
+    }
+
+
+    /* TOP + BOTTOM */
+
+    if (!outfit.length) {
+
+        const top =
+            chooseBest(
+                tops,
+                style,
+                occasion,
+                usedIds
+            );
+
+
+        const bottom =
+            chooseBest(
+                bottoms,
+                style,
+                occasion,
+                usedIds
+            );
+
+
+        if (top) {
+
+            outfit.push(top);
+
+            usedIds.push(top.id);
+
+        }
+
+
+        if (bottom) {
+
+            outfit.push(bottom);
+
+            usedIds.push(bottom.id);
+
+        }
+
+    }
+
+
+    /* SHOES */
+
+    const shoe =
+        chooseBest(
+            shoes,
+            style,
+            occasion,
+            usedIds
+        );
+
+
+    if (shoe) {
+
+        outfit.push(shoe);
+
+        usedIds.push(shoe.id);
+
+    }
+
+
+    /* BAG */
+
+    const bag =
+        chooseBest(
+            bags,
+            style,
+            occasion,
+            usedIds
+        );
+
+
+    if (bag) {
+
+        outfit.push(bag);
+
+        usedIds.push(bag.id);
+
+    }
+
+
+    /* ACCESSORY */
+
+    if (
+        accessories.length &&
+        Math.random() < 0.65
+    ) {
+
+        const accessory =
+            chooseBest(
+                accessories,
+                style,
+                occasion,
+                usedIds
+            );
+
+
+        if (accessory) {
+
+            outfit.push(accessory);
+
+        }
+
+    }
+
+
+    currentGeneratedOutfit = outfit;
+
+
+    if (!outfit.length) {
+
+        document.getElementById("outfitResult").innerHTML = `
+
+            <div class="outfit-box">
+
+                <h3>
+                    Add some clothes first ♡
+                </h3>
+
+                <p>
+                    Your closet needs a few pieces before
+                    FitMuse can create a look.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const pieces =
+        outfit.map(function(item) {
+
+            let visual = "";
+
+
+            if (item.photo) {
+
+                visual =
+                    `<img src="${item.photo}"
+                          alt="${escapeHtml(item.name)}">`;
+
+            }
+
+            else {
+
+                visual =
+                    `<div class="piece-icon">
+                        ${getCategoryIcon(item.category)}
+                     </div>`;
+
+            }
+
+
+            return `
+
+                <div class="outfit-piece">
+
+                    ${visual}
+
+                    <strong>
+                        ${escapeHtml(item.name)}
+                    </strong>
+
+                    <small>
+                        ${escapeHtml(item.category)}
+                        •
+                        ${escapeHtml(item.color)}
+                    </small>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    const weatherText =
+        getWeatherAdvice();
+
+
+    document.getElementById("outfitResult").innerHTML = `
+
+        <div class="outfit-box">
+
+            <h3>
+                ✨ Your ${style} ${occasion} Outfit
+            </h3>
+
+            <p>
+                FitMuse created this look using your closet
+                for ${currentWeather.toLowerCase()} weather ♡
+            </p>
+
+
+            <div class="outfit-items">
+
+                ${pieces}
+
+            </div>
+
+
+            <div class="outfit-note">
+
+                <strong>
+                    ♡ FitMuse Style Note
+                </strong>
+
+                <br>
+
+                ${weatherText}
+
+            </div>
+
+
+            <div class="outfit-actions">
+
+                <button
+                    class="primary-button"
+                    onclick="saveCurrentOutfit()">
+
+                    💾 Save Outfit
+
+                </button>
+
+
+                <button
+                    class="secondary-button"
+                    onclick="generateOutfit()">
+
+                    🔄 Try Another
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   WEATHER ADVICE
+===================================================== */
+
+function getWeatherAdvice() {
+
+    if (currentWeather === "Sunny") {
+
+        return "Keep things light and comfortable. Sunglasses or a cute accessory can finish the look. ☀️";
+
+    }
+
+
+    if (currentWeather === "Warm") {
+
+        return "Choose breathable pieces and lighter layers so you stay comfortable. 🌸";
+
+    }
+
+
+    if (currentWeather === "Cool") {
+
+        return "A hoodie, cardigan, sweater or light jacket can make the outfit extra cozy. 🍂";
+
+    }
+
+
+    if (currentWeather === "Rainy") {
+
+        return "Keep an eye on your shoes and choose pieces that are practical for wet weather. 🌧️";
+
+    }
+
+
+    return "Make the look your own! ♡";
+
+}
+
+
+/* =====================================================
+   SAVE OUTFIT
+===================================================== */
+
+function saveCurrentOutfit() {
+
+    if (!currentGeneratedOutfit.length) {
+
+        showToast("Generate an outfit first ♡");
+
+        return;
+
+    }
+
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem("fitmuseSavedOutfits")
+        ) || [];
+
+
+    const occasion =
+        document.getElementById("occasion").value;
+
+    const style =
+        document.getElementById("style").value;
+
+
+    const newSaved = {
+
+        id: Date.now(),
+
+        occasion: occasion,
+
+        style: style,
+
+        weather: currentWeather,
+
+        items: currentGeneratedOutfit,
+
+        date: new Date().toLocaleDateString()
+
+    };
+
+
+    saved.unshift(newSaved);
+
+
+    localStorage.setItem(
+        "fitmuseSavedOutfits",
+        JSON.stringify(saved)
+    );
+
+
+    showToast("Outfit saved ♡");
+
+    updateProfile();
+
+}
+
+
+/* =====================================================
+   SAVED OUTFITS DISPLAY
+===================================================== */
+
+function displaySavedOutfits() {
+
+    const grid =
+        document.getElementById("savedGrid");
+
+    if (!grid) return;
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem("fitmuseSavedOutfits")
+        ) || [];
+
+
+    if (!saved.length) {
+
+        grid.innerHTML = `
+
+            <div class="info-box">
+
+                <h3>
+                    No saved outfits yet ♡
+                </h3>
+
+                <p>
+                    Go to Style Me, create a look you love,
+                    then tap "Save Outfit".
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = "";
+
+
+    saved.forEach(function(outfit) {
+
+        html += `
+
+            <div class="saved-card">
+
+                <h3>
+                    ${escapeHtml(outfit.style)}
+                    •
+                    ${escapeHtml(outfit.occasion)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(outfit.weather)}
+                    weather
+                    •
+                    ${escapeHtml(outfit.date)}
+                </p>
+
+                <div class="saved-mini-items">
+
+        `;
+
+
+        outfit.items.forEach(function(item) {
+
+            html += `
+
+                <div class="saved-mini-item">
+
+                    <strong>
+                        ${escapeHtml(item.name)}
+                    </strong>
+
+                    ${escapeHtml(item.category)}
+
+                </div>
+
+            `;
+
+        });
+
+
+        html += `
+
+                </div>
+
+                <br>
+
+                <button
+                    class="danger-button"
+                    onclick="deleteSavedOutfit(${outfit.id})">
+
+                    🗑️ Delete
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    grid.innerHTML = html;
+
+}
+
+
+/* =====================================================
+   DELETE SAVED OUTFIT
+===================================================== */
+
+function deleteSavedOutfit(id) {
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem("fitmuseSavedOutfits")
+        ) || [];
+
+
+    saved =
+        saved.filter(function(outfit) {
+
+            return outfit.id !== id;
+
+        });
+
+
+    localStorage.setItem(
+        "fitmuseSavedOutfits",
+        JSON.stringify(saved)
+    );
+
+
+    displaySavedOutfits();
+
+    updateProfile();
+
+    showToast("Saved outfit deleted");
+
+}
+
+
+/* =====================================================
+   PLANNER
+===================================================== */
+
+function displayPlanner() {
+
+    const grid =
+        document.getElementById("plannerGrid");
+
+    if (!grid) return;
+
+
+    const days = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ];
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem("fitmuseSavedOutfits")
+        ) || [];
+
+
+    let planner =
+        JSON.parse(
+            localStorage.getItem("fitmusePlanner")
+        ) || {};
+
+
+    let html = "";
+
+
+    days.forEach(function(day) {
+
+        const selected =
+            planner[day];
+
+
+        html += `
+
+            <div class="day-card">
+
+                <h3>
+                    ${day}
+                </h3>
+
+                <div class="day-outfit">
+
+                    ${
+                        selected
+                        ?
+                        `
+                        <strong>
+                            ${escapeHtml(selected.style)}
+                        </strong>
+
+                        <br>
+
+                        ${escapeHtml(selected.items
+                            .map(item => item.name)
+                            .join(", ")
+                        )}
+                        `
+                        :
+                        `
+                        No outfit planned ♡
+                        `
+                    }
+
+                </div>
+
+                <br>
+
+                <select
+                    onchange="assignPlanner('${day}', this.value)">
+
+                    <option value="">
+                        Choose saved look
+                    </option>
+
+                    ${
+                        saved.map(function(outfit) {
+
+                            return `
+
+                                <option
+                                    value="${outfit.id}"
+                                    ${
+                                        selected &&
+                                        selected.id === outfit.id
+                                        ?
+                                        "selected"
+                                        :
+                                        ""
+                                    }>
+
+                                    ${escapeHtml(
+                                        outfit.style
+                                    )}
+                                    •
+                                    ${escapeHtml(
+                                        outfit.occasion
+                                    )}
+
+                                </option>
+
+                            `;
+
+                        }).join("")
+
+                    }
+
+                </select>
+
+            </div>
+
+        `;
+
+    });
+
+
+    grid.innerHTML = html;
+
+}
+
+
+function assignPlanner(day, outfitId) {
+
+    let planner =
+        JSON.parse(
+            localStorage.getItem("fitmusePlanner")
+        ) || {};
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem("fitmuseSavedOutfits")
+        ) || [];
+
+
+    const outfit =
+        saved.find(function(item) {
+
+            return String(item.id) === String(outfitId);
+
+        });
+
+
+    if (!outfitId || !outfit) {
+
+        delete planner[day];
+
+    }
+
+    else {
+
+        planner[day] = outfit;
+
+    }
+
+
+    localStorage.setItem(
+        "fitmusePlanner",
+        JSON.stringify(planner)
+    );
+
+
+    displayPlanner();
+
+    showToast(day + " outfit updated ♡");
+
+}
+
+
+function clearPlanner() {
+
+    localStorage.removeItem("fitmusePlanner");
+
+    displayPlanner();
+
+    showToast("Weekly planner cleared");
+
+}
+
+
+/* =====================================================
+   REWEAR CHALLENGE
+===================================================== */
+
+function getChallenge() {
+
+    return JSON.parse(
+        localStorage.getItem("fitmuseChallenge")
+    ) || [];
+
+}
+
+
+function displayChallenge() {
+
+    const container =
+        document.getElementById("challengeDays");
+
+    if (!container) return;
+
+
+    const days = getChallenge();
+
+
+    const names = [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+    ];
+
+
+    let html = "";
+
+
+    for (let i = 0; i < 7; i++) {
+
+        const done =
+            days.includes(i);
+
+
+        html += `
+
+            <div
+                class="challenge-day ${done ? "done" : ""}"
+                onclick="toggleChallengeDay(${i})">
+
+                ${done ? "♡" : "○"}
+
+                <br>
+
+                ${names[i]}
+
+            </div>
+
+        `;
+
+    }
+
+
+    container.innerHTML = html;
+
+
+    const completed =
+        days.length;
+
+
+    const percentage =
+        (completed / 7) * 100;
+
+
+    document.getElementById(
+        "challengeProgress"
+    ).style.width =
+        percentage + "%";
+
+
+    document.getElementById(
+        "challengeText"
+    ).textContent =
+        completed +
+        " of 7 days completed";
+
+
+    updateProfile();
+
+}
+
+
+function toggleChallengeDay(index) {
+
+    let days =
+        getChallenge();
+
+
+    if (days.includes(index)) {
+
+        days =
+            days.filter(function(day) {
+
+                return day !== index;
+
+            });
+
+    }
+
+    else {
+
+        days.push(index);
+
+    }
+
+
+    localStorage.setItem(
+        "fitmuseChallenge",
+        JSON.stringify(days)
+    );
+
+
+    displayChallenge();
+
+}
+
+
+function resetChallenge() {
+
+    localStorage.removeItem(
+        "fitmuseChallenge"
+    );
+
+
+    displayChallenge();
+
+    showToast("Challenge restarted ♡");
+
+}
+
+
+/* =====================================================
+   AI STYLIST CHAT
+===================================================== */
+
+function sendMessage() {
+
+    const input =
+        document.getElementById("chatInput");
+
+
+    const message =
+        input.value.trim();
+
+
+    if (!message) return;
+
+
+    const messages =
+        document.getElementById("chatMessages");
+
+
+    messages.innerHTML += `
+
+        <div class="message user-message">
+
+            ${escapeHtml(message)}
+
+        </div>
+
+    `;
+
+
+    const lower =
+        message.toLowerCase();
+
+
+    let reply = "";
+
+
+    if (
+        lower.includes("school") ||
+        lower.includes("class")
+    ) {
+
+        reply =
+            "For school, try something comfortable but cute ♡ A simple top, jeans or a skirt, and sneakers can make an easy everyday look.";
+
+    }
+
+
+    else if (
+        lower.includes("jeans") ||
+        lower.includes("denim")
+    ) {
+
+        reply =
+            "Jeans are sooo versatile 🎀 Try them with a fitted tee, a blouse, or a hoodie depending on your vibe.";
+
+    }
+
+
+    else if (
+        lower.includes("pink")
+    ) {
+
+        reply =
+            "Pink is perfect for a soft or coquette look! ♡ Try pairing it with white, denim, cream, black, or another soft shade.";
+
+    }
+
+
+    else if (
+        lower.includes("party") ||
+        lower.includes("birthday")
+    ) {
+
+        reply =
+            "For a party or birthday, let one piece be the star. A dress, skirt, statement top, or cute accessory can make the outfit feel special ✨";
+
+    }
+
+
+    else if (
+        lower.includes("weather") ||
+        lower.includes("rain")
+    ) {
+
+        reply =
+            "You can use the weather buttons in Style Me 🌤️ Pick Sunny, Warm, Cool, or Rainy and FitMuse will adjust its outfit suggestions.";
+
+    }
+
+
+    else if (
+        lower.includes("coquette")
+    ) {
+
+        reply =
+            "For a coquette vibe 🎀 think soft colors, skirts, pretty blouses, bows, delicate accessories, and cute bags.";
+
+    }
+
+
+    else if (
+        lower.includes("y2k")
+    ) {
+
+        reply =
+            "For Y2K ✨ try baggy jeans, colorful tops, sneakers, cute bags, and fun accessories.";
+
+    }
+
+
+    else if (
+        lower.includes("cozy")
+    ) {
+
+        reply =
+            "Cozy girl mode ☕ Try hoodies, sweaters, jeans, comfy sneakers and soft layers.";
+
+    }
+
+
+    else {
+
+        reply =
+            "Ooo bestie 🎀 I would start with Style Me! Choose your occasion, vibe and weather, then let FitMuse create a look from your closet ♡";
+
+    }
+
+
+    setTimeout(function() {
+
+        messages.innerHTML += `
+
+            <div class="message bot-message">
+
+                ${reply}
+
+            </div>
+
+        `;
+
+
+        messages.scrollTop =
+            messages.scrollHeight;
+
+    }, 300);
+
+
+    input.value = "";
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+function updateProfile() {
+
+    const clothes =
+        getAllClothes();
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "fitmuseSavedOutfits"
+            )
+        ) || [];
+
+
+    const challenge =
+        getChallenge();
+
+
+    const closetCount =
+        document.getElementById(
+            "profileClosetCount"
+        );
+
+
+    const savedCount =
+        document.getElementById(
+            "profileSavedCount"
+        );
+
+
+    const challengeCount =
+        document.getElementById(
+            "profileChallengeCount"
+        );
+
+
+    if (closetCount) {
+
+        closetCount.textContent =
+            clothes.length;
+
+    }
+
+
+    if (savedCount) {
+
+        savedCount.textContent =
+            saved.length;
+
+    }
+
+
+    if (challengeCount) {
+
+        challengeCount.textContent =
+            challenge.length;
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    toast.textContent = message;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(function() {
+
+        toast.classList.remove("show");
+
+    }, 2200);
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(text) {
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   START APP
+===================================================== */
+
+window.addEventListener("load", function() {
+
+    displayCloset();
+
+    displaySavedOutfits();
+
+    displayPlanner();
+
+    displayChallenge();
+
+    updateProfile();
+
+});
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    const isDark =
+        document.body.classList.contains("dark-mode");
+
+    localStorage.setItem(
+        "fitmuseDarkMode",
+        isDark ? "on" : "off"
+    );
+
+    showToast(
+        isDark
+            ? "Dark Mode turned on 🌙"
+            : "Light Mode turned on ☀️"
+    );
+}
+
+
+function toggleNotifications() {
+
+    const current =
+        localStorage.getItem("fitmuseNotifications");
+
+    const enabled = current !== "on";
+
+    localStorage.setItem(
+        "fitmuseNotifications",
+        enabled ? "on" : "off"
+    );
+
+    showToast(
+        enabled
+            ? "Outfit reminders turned on 🔔"
+            : "Outfit reminders turned off 🔕"
+    );
+}
+
+
+function clearSavedOutfits() {
+
+    if (!confirm("Clear all saved outfits?")) {
+        return;
+    }
+
+    localStorage.removeItem("fitmuseSavedOutfits");
+
+    showToast("Saved outfits cleared ♡");
+
+    if (typeof displaySavedOutfits === "function") {
+        displaySavedOutfits();
+    }
+}
+
+
+function clearPlanner() {
+
+    if (!confirm("Clear your entire outfit planner?")) {
+        return;
+    }
+
+    localStorage.removeItem("fitmusePlanner");
+
+    showToast("Outfit planner cleared ♡");
+
+    if (typeof displayPlanner === "function") {
+        displayPlanner();
+    }
+}
+
+
+function resetFitMuse() {
+
+    const confirmed =
+        confirm(
+            "Are you sure? This will remove all your FitMuse data."
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem("fitmuseClothes");
+    localStorage.removeItem("fitmuseSavedOutfits");
+    localStorage.removeItem("fitmusePlanner");
+    localStorage.removeItem("fitmuseChallenge");
+    localStorage.removeItem("fitmuseNotifications");
+    localStorage.removeItem("fitmuseDarkMode");
+
+    showToast("FitMuse has been reset ♡");
+
+    setTimeout(function() {
+        location.reload();
+    }, 800);
+}
+
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+        navigator.serviceWorker.register("sw.js");
+    });
+}
+</script>
+
+</body>
+</html>
